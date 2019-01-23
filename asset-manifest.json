@@ -1,0 +1,14 @@
+{
+  "main.css": "/nyt-google-books-search/static/css/main.d10f8194.chunk.css",
+  "main.js": "/nyt-google-books-search/static/js/main.c8e1c2b4.chunk.js",
+  "main.js.map": "/nyt-google-books-search/static/js/main.c8e1c2b4.chunk.js.map",
+  "static/js/1.fa92c112.chunk.js": "/nyt-google-books-search/static/js/1.fa92c112.chunk.js",
+  "static/js/1.fa92c112.chunk.js.map": "/nyt-google-books-search/static/js/1.fa92c112.chunk.js.map",
+  "runtime~main.js": "/nyt-google-books-search/static/js/runtime~main.15e9a9ce.js",
+  "runtime~main.js.map": "/nyt-google-books-search/static/js/runtime~main.15e9a9ce.js.map",
+  "static/media/logo.svg": "/nyt-google-books-search/static/media/logo.5d5d9eef.svg",
+  "static/css/main.d10f8194.chunk.css.map": "/nyt-google-books-search/static/css/main.d10f8194.chunk.css.map",
+  "index.html": "/nyt-google-books-search/index.html",
+  "precache-manifest.5a13407a7fbcf00eb52951d50041f3b3.js": "/nyt-google-books-search/precache-manifest.5a13407a7fbcf00eb52951d50041f3b3.js",
+  "service-worker.js": "/nyt-google-books-search/service-worker.js"
+}
