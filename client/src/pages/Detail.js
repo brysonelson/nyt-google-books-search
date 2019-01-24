@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Card } from "react-materialize";
 import Jumbotron from "../components/Jumbotron";
 import { Row, Col } from "react-materialize";
 import API from "../utils/API";
@@ -18,31 +19,39 @@ class Detail extends Component {
 
   render() {
     return (
-      <wrapper fluid>
+      <wrapper>
         <Row>
-          <Col size="md-12">
-            <Jumbotron>
-              <h1>
-                {this.state.book.title} by {this.state.book.author}
-              </h1>
-            </Jumbotron>
+          <Col className="offset-s1" s={10}>
+          <Card title={this.state.book.title}>
+          <Row>
+            <Col s={12}>
+
+              by {this.state.book.author}
+
+            </Col>
+            <Col s={12}>
+              <article>
+                <h4>Synopsis</h4>
+                <p>
+                  {this.state.book.synopsis}
+                </p>
+              </article>
+            </Col>
+            </Row>
+          </Card>
           </Col>
         </Row>
         <Row>
           <Col size="md-10 md-offset-1">
-            <article>
-              <h1>Synopsis</h1>
-              <p>
-                {this.state.book.synopsis}
-              </p>
-            </article>
+
           </Col>
         </Row>
         <Row>
           <Col size="md-2">
-            <Link to="/">← Back to Authors</Link>
+            <Link to="/saved">← Back to Saved Books</Link>
           </Col>
         </Row>
+
       </wrapper>
     );
   }

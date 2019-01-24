@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import SearchBar from "../components/SearchBar";
 import { Row, Col, Card } from "react-materialize";
@@ -20,9 +19,11 @@ class Search extends Component {
   loadBooks = () => {
     API.getBooks()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        // this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        console.log(res)
       )
       .catch(err => console.log(err));
+      
   };
 
   deleteBook = id => {
@@ -55,7 +56,7 @@ class Search extends Component {
     return (
       <wrapper>
         <Jumbotron />
-        <SearchBar />
+        <SearchBar search={this.handleFormSubmit} />
         <Row>
             <Col s={10} className="offset-s1">
                 <Card title="Results">
