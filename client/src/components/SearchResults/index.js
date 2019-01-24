@@ -15,7 +15,7 @@ function SearchBar(props) {
                                     {props.results.map(book => (
                                         <CollectionItem key={book._id}>
                                             <Row>
-                                                <Col s={10}>
+                                                <Col s={8}>
                                                     <Row>
                                                         <Col s={12}>
                                                             <strong>
@@ -32,8 +32,13 @@ function SearchBar(props) {
                                                         </Col>
                                                     </Row>
                                                 </Col>
-                                                <Col s={2}>
-                                                    <Button className="red" onClick={() => this.saveBook(book[1].volumeInfo.title)} right>Delete</Button>
+                                                <Col s={4}>
+                                                    <Row>
+                                                        <Button className="teal" onClick={() => this.saveBook(book[1].volumeInfo.title)} right>Save</Button>
+                                                    </Row>
+                                                    <Row>
+                                                        <img src={book[1].volumeInfo.imageLinks.smallThumbnail} />
+                                                    </Row>
                                                 </Col>
                                             </Row>
                                         </CollectionItem>
