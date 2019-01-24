@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import SearchBar from "../components/SearchBar";
-import { Row, Col, Card } from "react-materialize";
+import { Link } from "react-router-dom";
+import { Row, Col, Card, Collection, CollectionItem, Button } from "react-materialize";
 import API from "../utils/API";
+import SearchResults from "../components/SearchResults";
 
 class Search extends Component {
   state = {
     books: [],
-    title: "",
-    author: "",
-    synopsis: ""
+    search: "",
+    results: []
   };
 
   componentDidMount() {
@@ -23,7 +24,7 @@ class Search extends Component {
         console.log(res)
       )
       .catch(err => console.log(err));
-      
+
   };
 
   deleteBook = id => {
@@ -41,13 +42,22 @@ class Search extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
+    // console.log("submitted");
+    // console.log(this.state.search);
+    if (this.state.search) {
+      API.searchBooks(this.state.search)
+        .then(res => {
+          if (res.data.status === "error") {
+            throw new Error(res.data.message);
+          }
+          // console.log(res.data.items);
+          const arr = Object.keys(res.data.items).map((key) => [key, res.data.items[key]]);
+          this.setState({ results: arr, error: "" });
+          // console.log(this.state.results);
+          arr.map(book => {
+            console.log(book[1].volumeInfo.title);
+          })
+        })
         .catch(err => console.log(err));
     }
   };
@@ -56,14 +66,11 @@ class Search extends Component {
     return (
       <wrapper>
         <Jumbotron />
-        <SearchBar search={this.handleFormSubmit} />
-        <Row>
-            <Col s={10} className="offset-s1">
-                <Card title="Results">
-                    
-                </Card>
-            </Col>
-        </Row>
+        <SearchBar
+          handleFormSubmit={this.handleFormSubmit}
+          handleInputChange={this.handleInputChange}
+        />
+        <SearchResults results={this.state.results}/>
       </wrapper>
     );
   }
